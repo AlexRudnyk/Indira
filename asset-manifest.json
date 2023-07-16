@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/indira/static/css/main.4aeb4aac.css",
-    "main.js": "/indira/static/js/main.0fdc4fd4.js",
+    "main.js": "/indira/static/js/main.aa864086.js",
     "index.html": "/indira/index.html",
     "main.4aeb4aac.css.map": "/indira/static/css/main.4aeb4aac.css.map",
-    "main.0fdc4fd4.js.map": "/indira/static/js/main.0fdc4fd4.js.map"
+    "main.aa864086.js.map": "/indira/static/js/main.aa864086.js.map"
   },
   "entrypoints": [
     "static/css/main.4aeb4aac.css",
-    "static/js/main.0fdc4fd4.js"
+    "static/js/main.aa864086.js"
   ]
 }
