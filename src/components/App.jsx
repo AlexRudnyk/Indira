@@ -8,6 +8,8 @@ import { useAuth } from 'hooks';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { refreshUser } from 'redux/auth/operations';
+import { AdminPage } from 'pages/AdminPage';
+import { AdminRoute } from './Routes/AdminRoute';
 
 export const App = () => {
   const { isRefreshing, isLoggedIn } = useAuth();
@@ -34,6 +36,10 @@ export const App = () => {
               element={
                 <RestrictedRoute component={<LoginPage />} redirectTo="/" />
               }
+            />
+            <Route
+              path="/admin"
+              element={<AdminRoute component={<AdminPage />} redirectTo="/" />}
             />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>

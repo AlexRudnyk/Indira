@@ -7,6 +7,7 @@ const initialState = {
     name: null,
     email: null,
     phone: null,
+    role: null,
     goodsInCart: [],
   },
   accessToken: null,
@@ -29,11 +30,6 @@ const handleRejected = (state, action) => {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  //   reducers: {
-  //     setBalance(state, action) {
-  //       state.user.balance = action.payload;
-  //     },
-  //   },
   extraReducers: builder => {
     builder
       .addCase(signup.pending, handlePending)
@@ -61,6 +57,7 @@ const authSlice = createSlice({
           name: null,
           email: null,
           phone: null,
+          role: null,
           goodsInCart: [],
         };
         state.accessToken = null;
