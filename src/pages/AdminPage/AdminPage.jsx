@@ -1,8 +1,8 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useState } from 'react';
 // import * as yup from 'yup';
-// import { useDispatch } from 'react-redux';
-// import { signup, login } from '../../redux/auth/operations';
+import { useDispatch } from 'react-redux';
+import { addGoods } from 'redux/goods/operations';
 
 // const schema = yup.object().shape({
 //   title: yup
@@ -16,6 +16,7 @@ import { useState } from 'react';
 // });
 
 export const AdminPage = () => {
+  const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
   const [photo, setPhoto] = useState('');
@@ -35,7 +36,7 @@ export const AdminPage = () => {
   formData.append('price', price);
 
   const handleSubmit = (values, actions) => {
-    console.log('formData', formData);
+    dispatch(addGoods(formData));
     setTitle('');
     setText('');
     setPhoto('');
