@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
 axios.defaults.baseURL = 'http://localhost:3030';
 
@@ -32,6 +33,7 @@ export const addGoods = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await axios.post('/api/goods/addgood', credentials);
+      toast.success('Item added successfully');
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
