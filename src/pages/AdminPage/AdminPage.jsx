@@ -19,13 +19,13 @@ export const AdminPage = () => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
-  const [photo, setPhoto] = useState('');
+  const [photo, setPhoto] = useState(null);
   const [price, setPrice] = useState('');
 
   const initialValues = {
     title: '',
     text: '',
-    photoURL: '',
+    photoURL: null,
     price: '',
   };
 
@@ -39,7 +39,7 @@ export const AdminPage = () => {
     dispatch(addGoods(formData));
     setTitle('');
     setText('');
-    setPhoto('');
+    setPhoto(null);
     setPrice('');
   };
 
