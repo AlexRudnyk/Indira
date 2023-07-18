@@ -40,3 +40,15 @@ export const addGoods = createAsyncThunk(
     }
   }
 );
+
+export const deleteGood = createAsyncThunk(
+  'goods/deleteGood',
+  async (id, thunkAPI) => {
+    try {
+      const { data } = await axios.delete(`/api/goods/delete/${id}`);
+      return data._id;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);

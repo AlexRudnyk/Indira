@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addGoods, getAllGoods, getGoodById } from './operations';
+import { addGoods, getAllGoods, getGoodById, deleteGood } from './operations';
 
 const initialState = {
   goods: [],
@@ -39,11 +39,20 @@ const goodsSlice = createSlice({
 
       .addCase(getGoodById.pending, handlePending)
       .addCase(getGoodById.fulfilled, (state, action) => {
-        state.goods.filter(good => good.id === action.payload.id);
+        state.goods = state.goods.filter(
+          good => good._id === action.payload.id
+        );
         state.isRefreshing = false;
         state.error = false;
       })
-      .addCase(getGoodById.rejected, handleRejected);
+      .addCase(getGoodById.rejected, handleRejected)
+      .addCase(deleteGood.pending, handlePending)
+      .addCase(deleteGood.fulfilled, (state, action) => {
+        state.goods = state.goods.filter(good => good._id !== action.payload);
+        state.isRefreshing = false;
+        state.error = false;
+      })
+      .addCase(deleteGood.rejected, handleRejected);
   },
 });
 

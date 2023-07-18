@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getAllGoods } from 'redux/goods/operations';
-import { useSelector } from 'react-redux/es/hooks/useSelector';
+import { useGoods } from 'hooks';
 import { GoodItem } from 'components/GoodItem';
 
 export const HomePage = () => {
   const dispatch = useDispatch();
-  const goods = useSelector(state => state.goods.goods);
+  const { goods } = useGoods();
 
   useEffect(() => {
     dispatch(getAllGoods());
