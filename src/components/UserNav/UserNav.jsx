@@ -14,7 +14,11 @@ export const UserNav = () => {
   return (
     <>
       <p>Hello, {`${user.name}`}</p>
-      {user.role === 'admin' && <Link to="/admin">Admin</Link>}
+      {user.role === 'admin' ? (
+        <Link to="/admin">Admin</Link>
+      ) : (
+        <Link to="/cart">Cart</Link>
+      )}
       <button type="button" onClick={handleLogoutClick}>
         Logout
       </button>

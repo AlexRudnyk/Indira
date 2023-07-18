@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { getAllGoods } from 'redux/goods/operations';
 import { useGoods } from 'hooks';
 import { GoodItem } from 'components/GoodItem';
+import { GoodsList, GoodsItem } from './HomePage.styled';
 
 export const HomePage = () => {
   const dispatch = useDispatch();
@@ -15,13 +16,13 @@ export const HomePage = () => {
   return (
     goods.length !== 0 && (
       <>
-        <ul>
+        <GoodsList>
           {goods.map(good => (
-            <li key={good._id}>
+            <GoodsItem key={good._id}>
               <GoodItem good={good} />
-            </li>
+            </GoodsItem>
           ))}
-        </ul>
+        </GoodsList>
       </>
     )
   );

@@ -10,6 +10,8 @@ import { useEffect } from 'react';
 import { refreshUser } from 'redux/auth/operations';
 import { AdminPage } from 'pages/AdminPage';
 import { AdminRoute } from './Routes/AdminRoute';
+import { PrivateRoute } from './Routes/PrivateRoute';
+import { CartPage } from 'pages/CartPage';
 
 export const App = () => {
   const { isRefreshing, isLoggedIn } = useAuth();
@@ -40,6 +42,10 @@ export const App = () => {
             <Route
               path="/admin"
               element={<AdminRoute component={<AdminPage />} redirectTo="/" />}
+            />
+            <Route
+              path="/cart"
+              element={<PrivateRoute component={<CartPage />} redirectTo="/" />}
             />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
