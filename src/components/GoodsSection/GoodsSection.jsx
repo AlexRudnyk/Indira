@@ -7,6 +7,7 @@ import {
   GoodsSectionContainer,
   GoodsList,
   GoodsItem,
+  GoodsItemLink,
 } from './GoodsSection.styled';
 
 export const GoodsSection = () => {
@@ -24,12 +25,22 @@ export const GoodsSection = () => {
           <GoodsList>
             {goods.map(good => (
               <GoodsItem key={good._id}>
-                <GoodItem good={good} />
+                <GoodsItemLink to={`/details/${good._id}`}>
+                  <GoodItem good={good} />
+                </GoodsItemLink>
               </GoodsItem>
             ))}
           </GoodsList>
+
+          {/* <GoodsList>
+            {goods.map(good => (
+              <GoodsItem key={good._id}>
+                <GoodItem good={good} />
+              </GoodsItem>
+            ))}
+          </GoodsList> */}
         </>
-      )}{' '}
+      )}
     </GoodsSectionContainer>
   );
 };

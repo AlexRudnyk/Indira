@@ -12,6 +12,7 @@ import { AdminPage } from 'pages/AdminPage';
 import { AdminRoute } from './Routes/AdminRoute';
 import { PrivateRoute } from './Routes/PrivateRoute';
 import { CartPage } from 'pages/CartPage';
+import { GoodDetailsPage } from 'pages/GoodDetailsPage';
 
 export const App = () => {
   const { isRefreshing, isLoggedIn } = useAuth();
@@ -47,6 +48,7 @@ export const App = () => {
               path="/cart"
               element={<PrivateRoute component={<CartPage />} redirectTo="/" />}
             />
+            <Route path="/details/:id" element={<GoodDetailsPage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
         </Routes>

@@ -3,6 +3,7 @@ import { useState } from 'react';
 // import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { addGoods } from 'redux/goods/operations';
+import { AdminPageSection } from './AdminPage.styled';
 
 // const schema = yup.object().shape({
 //   title: yup
@@ -44,7 +45,7 @@ export const AdminPage = () => {
   };
 
   return (
-    <>
+    <AdminPageSection>
       <Formik
         // validationSchema={schema}
         initialValues={initialValues}
@@ -94,6 +95,6 @@ export const AdminPage = () => {
           </Form>
         )}
       </Formik>
-    </>
+    </AdminPageSection>
   );
 };

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const HeaderSection = styled.header`
-  background-color: lightgray;
+  /* background-color: lightgray; */
 `;
 
 export const Container = styled.div`
