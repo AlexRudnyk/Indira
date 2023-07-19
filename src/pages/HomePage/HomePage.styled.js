@@ -4,7 +4,6 @@ export const GoodsList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
-  padding: 20px;
 `;
 
 export const GoodsItem = styled.li`

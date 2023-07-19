@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 export const GoodsItemWrapper = styled.div`
-  /* outline: 1px solid black; */
-  height: 545px;
   border-radius: 20px;
 `;
 
@@ -16,9 +14,7 @@ export const GoodsItemTitle = styled.h3`
   margin-bottom: 15px;
 `;
 
-export const GoodsItemText = styled.p`
-  /* margin-bottom: 15px; */
-`;
+export const GoodsItemText = styled.p``;
 
 export const DescriptionWrapper = styled.div`
   display: flex;
