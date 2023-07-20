@@ -22,10 +22,12 @@ export const AdminPage = () => {
   const [text, setText] = useState('');
   const [photo, setPhoto] = useState(null);
   const [price, setPrice] = useState('');
+  const [description, setDescription] = useState('');
 
   const initialValues = {
     title: '',
     text: '',
+    description: '',
     photoURL: null,
     price: '',
   };
@@ -33,6 +35,7 @@ export const AdminPage = () => {
   const formData = new FormData();
   formData.append('title', title);
   formData.append('text', text);
+  formData.append('description', description);
   formData.append('photoURL', photo);
   formData.append('price', price);
 
@@ -40,6 +43,7 @@ export const AdminPage = () => {
     dispatch(addGoods(formData));
     setTitle('');
     setText('');
+    setDescription('');
     setPhoto(null);
     setPrice('');
   };
@@ -68,6 +72,15 @@ export const AdminPage = () => {
               name="text"
               placeholder="Enter Text"
               onChange={e => setText(e.target.value)}
+            />
+            <ErrorMessage name="text" />
+
+            <textarea
+              value={description}
+              type="text"
+              name="description"
+              placeholder="Enter description"
+              onChange={e => setDescription(e.target.value)}
             />
             <ErrorMessage name="text" />
 

@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { GoodDetailsWrapper } from './GoodDetailsPage.styled';
 
 export const GoodDetailsPage = () => {
   const { id } = useParams();
@@ -20,12 +21,24 @@ export const GoodDetailsPage = () => {
     getGood();
   }, [id]);
 
+  const handleAddCartClick = () => {
+    console.log('Added to Cart');
+  };
+
   return (
-    <>
-      <img src={good.photoURL} alt="good" />
-      <h3>{good.title}</h3>
-      <p>{good.text}</p>
-      <p>{good.price}</p>
-    </>
+    <GoodDetailsWrapper>
+      <div>
+        <img src={good.photoURL} alt="good" />
+      </div>
+      <div>
+        <h3>{good.title}</h3>
+        <p>{good.text}</p>
+        <p>{good.description}</p>
+        <p>{good.price} UAH</p>
+        <button type="button" onClick={handleAddCartClick}>
+          Add to Cart
+        </button>
+      </div>
+    </GoodDetailsWrapper>
   );
 };
