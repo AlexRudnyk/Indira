@@ -18,7 +18,7 @@ export const GoodDetailsPage = () => {
       }
     }
     getGood();
-  }, [id, good]);
+  }, [id]);
 
   return (
     <>
