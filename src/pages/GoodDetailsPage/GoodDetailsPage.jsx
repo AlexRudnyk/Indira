@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-// import { GoodDetailsWrapper } from './GooddetailsPage.styled';
+import { GoodDetailsWrapper } from './GoodDetailsPage.styled';
 
 export const GoodDetailsPage = () => {
   const { id } = useParams();
@@ -26,7 +26,7 @@ export const GoodDetailsPage = () => {
   };
 
   return (
-    <>
+    <GoodDetailsWrapper>
       <div>
         <img src={good.photoURL} alt="good" />
       </div>
@@ -39,6 +39,6 @@ export const GoodDetailsPage = () => {
           Add to Cart
         </button>
       </div>
-    </>
+    </GoodDetailsWrapper>
   );
 };
