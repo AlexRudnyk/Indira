@@ -4,11 +4,14 @@ import axios from 'axios';
 import { GoodDetailsWrapper } from './GoodDetailsPage.styled';
 import { useDispatch } from 'react-redux';
 import { addToCart } from 'redux/auth/operations';
+import { useAuth } from 'hooks';
+import { toast } from 'react-toastify';
 
 export const GoodDetailsPage = () => {
   const { id } = useParams();
   const [good, setGood] = useState({});
   const dispatch = useDispatch();
+  const { user } = useAuth();
 
   useEffect(() => {
     async function getGood() {
@@ -25,7 +28,11 @@ export const GoodDetailsPage = () => {
   }, [id]);
 
   const handleAddCartClick = () => {
-    dispatch(addToCart(id));
+    if (user.role === 'admin') {
+      dispatch(addToCart(id));
+    }
+
+    toast.error('please login');
   };
 
   return (
