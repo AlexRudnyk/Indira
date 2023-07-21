@@ -74,6 +74,7 @@ export const addToCart = createAsyncThunk(
       toast.success('Good added to cart');
       return data;
     } catch (error) {
+      toast.error('This good is already in the cart');
       return thunkAPI.rejectWithValue(error.response.data);
     }
   }

@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addGoods } from 'redux/goods/operations';
 import { AdminPageSection } from './AdminPage.styled';
+import { AdminGoodItem } from 'components/AdminGoodItem';
+import { useGoods } from 'hooks';
 
 // const schema = yup.object().shape({
 //   title: yup
@@ -18,6 +20,7 @@ import { AdminPageSection } from './AdminPage.styled';
 
 export const AdminPage = () => {
   const dispatch = useDispatch();
+  const { goods } = useGoods();
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
   const [photo, setPhoto] = useState(null);
@@ -108,6 +111,13 @@ export const AdminPage = () => {
           </Form>
         )}
       </Formik>
+      <ul>
+        {goods.map(good => (
+          <li key={good._id}>
+            <AdminGoodItem good={good} />
+          </li>
+        ))}
+      </ul>
     </AdminPageSection>
   );
 };
