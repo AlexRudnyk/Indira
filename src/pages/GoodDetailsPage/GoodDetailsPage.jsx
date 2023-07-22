@@ -11,7 +11,7 @@ export const GoodDetailsPage = () => {
   const { id } = useParams();
   const [good, setGood] = useState({});
   const dispatch = useDispatch();
-  const { user } = useAuth();
+  const { isLoggedIn } = useAuth();
 
   useEffect(() => {
     async function getGood() {
@@ -28,11 +28,11 @@ export const GoodDetailsPage = () => {
   }, [id]);
 
   const handleAddCartClick = () => {
-    if (user.role === 'admin') {
+    if (isLoggedIn) {
       dispatch(addToCart(id));
+    } else {
+      toast.error('please login');
     }
-
-    toast.error('please login');
   };
 
   return (

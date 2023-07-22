@@ -1,5 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { signup, login, logout, refreshUser, addToCart } from './operations';
+import {
+  signup,
+  login,
+  logout,
+  refreshUser,
+  addToCart,
+  deleteFromCart,
+} from './operations';
 
 const initialState = {
   user: {
@@ -84,7 +91,16 @@ const authSlice = createSlice({
         state.isRefreshing = false;
         state.error = false;
       })
-      .addCase(addToCart.rejected, handleRejected);
+      .addCase(addToCart.rejected, handleRejected)
+      .addCase(deleteFromCart.pending, handlePending)
+      .addCase(deleteFromCart.fulfilled, (state, action) => {
+        state.user.goodsInCart = state.user.goodsInCart.filter(
+          good => good._id !== action.payload
+        );
+        state.isRefreshing = false;
+        state.error = false;
+      })
+      .addCase(deleteFromCart.rejected, handleRejected);
   },
 });
 

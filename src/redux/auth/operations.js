@@ -79,3 +79,15 @@ export const addToCart = createAsyncThunk(
     }
   }
 );
+
+export const deleteFromCart = createAsyncThunk(
+  'auth/deleteFromCart',
+  async (id, thunkAPI) => {
+    try {
+      const { data } = await axios.delete(`/api/users/deletefromcart/${id}`);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);
