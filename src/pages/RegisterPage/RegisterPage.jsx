@@ -1,7 +1,16 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { signup, login } from '../../redux/auth/operations';
+import {
+  RegisterPageContainer,
+  RegisterPageWrapper,
+  RegisterPageTitle,
+  RegisterFormWrapper,
+  RegisterPageForm,
+  RegisterPageInput,
+  RegisterPageBtn,
+} from './RegisterPage.styled';
 
 const schema = yup.object().shape({
   name: yup
@@ -51,13 +60,11 @@ export const RegisterPage = () => {
       const resultSignup = await dispatch(
         signup({ name, email, phone, password })
       );
-      // toast.success(`Welcome ${name}!`);
 
       if (resultSignup.type === 'auth/signup/fulfilled') {
         await dispatch(login({ email, password }));
       }
       if (resultSignup.type === 'auth/signup/rejected') {
-        // toast.error(resultSignup.payload.message);
       }
       resetForm();
     } catch (error) {
@@ -66,32 +73,49 @@ export const RegisterPage = () => {
   };
 
   return (
-    <>
-      <Formik
-        initialValues={initialValues}
-        onSubmit={handleSubmit}
-        validationSchema={schema}
-      >
-        <Form>
-          <Field type="text" name="name" placeholder="John Doe" />
-          <ErrorMessage name="name" />
+    <RegisterPageContainer>
+      <RegisterPageWrapper>
+        <RegisterPageTitle>Please Register</RegisterPageTitle>
+        <RegisterFormWrapper>
+          <Formik
+            initialValues={initialValues}
+            onSubmit={handleSubmit}
+            validationSchema={schema}
+          >
+            <RegisterPageForm>
+              <RegisterPageInput
+                type="text"
+                name="name"
+                placeholder="John Doe"
+              />
+              <ErrorMessage name="name" />
 
-          <Field type="text" name="phone" placeholder="+380671112233" />
-          <ErrorMessage name="phone" />
+              <RegisterPageInput
+                type="text"
+                name="phone"
+                placeholder="+380671112233"
+              />
+              <ErrorMessage name="phone" />
 
-          <Field type="email" name="email" placeholder="example@mail.com" />
-          <ErrorMessage name="email" />
+              <RegisterPageInput
+                type="email"
+                name="email"
+                placeholder="example@mail.com"
+              />
+              <ErrorMessage name="email" />
 
-          <Field
-            type="password"
-            name="password"
-            placeholder="Please enter your password"
-          />
-          <ErrorMessage name="password" />
+              <RegisterPageInput
+                type="password"
+                name="password"
+                placeholder="Please enter your password"
+              />
+              <ErrorMessage name="password" />
 
-          <button type="submit">Submit</button>
-        </Form>
-      </Formik>
-    </>
+              <RegisterPageBtn type="submit">Submit</RegisterPageBtn>
+            </RegisterPageForm>
+          </Formik>
+        </RegisterFormWrapper>
+      </RegisterPageWrapper>
+    </RegisterPageContainer>
   );
 };

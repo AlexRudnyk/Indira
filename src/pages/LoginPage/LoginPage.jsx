@@ -1,7 +1,16 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { ErrorMessage, Formik } from 'formik';
 import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { login } from '../../redux/auth/operations';
+import {
+  LoginPageContainer,
+  LoginPageForm,
+  LoginPageInput,
+  LoginPageBtn,
+  LoginFormWrapper,
+  LoginPageTitle,
+  LoginPageWrapper,
+} from './LoginPage.styled';
 
 const schema = yup.object().shape({
   email: yup
@@ -38,7 +47,6 @@ export const LoginPage = () => {
   const handleSubmit = async ({ email, password }, { resetForm }) => {
     try {
       dispatch(login({ email, password }));
-      // toast.success(`Welcome ${name}!`);
 
       resetForm();
     } catch (error) {
@@ -47,26 +55,35 @@ export const LoginPage = () => {
   };
 
   return (
-    <>
-      <Formik
-        initialValues={initialValues}
-        onSubmit={handleSubmit}
-        validationSchema={schema}
-      >
-        <Form>
-          <Field type="email" name="email" placeholder="example@mail.com" />
-          <ErrorMessage name="email" />
+    <LoginPageContainer>
+      <LoginPageWrapper>
+        <LoginPageTitle>Please Login</LoginPageTitle>
+        <LoginFormWrapper>
+          <Formik
+            initialValues={initialValues}
+            onSubmit={handleSubmit}
+            validationSchema={schema}
+          >
+            <LoginPageForm>
+              <LoginPageInput
+                type="email"
+                name="email"
+                placeholder="example@mail.com"
+              />
+              <ErrorMessage name="email" />
 
-          <Field
-            type="password"
-            name="password"
-            placeholder="Please enter your password"
-          />
-          <ErrorMessage name="password" />
+              <LoginPageInput
+                type="password"
+                name="password"
+                placeholder="Please enter your password"
+              />
+              <ErrorMessage name="password" />
 
-          <button type="submit">Submit</button>
-        </Form>
-      </Formik>
-    </>
+              <LoginPageBtn type="submit">Submit</LoginPageBtn>
+            </LoginPageForm>
+          </Formik>
+        </LoginFormWrapper>
+      </LoginPageWrapper>
+    </LoginPageContainer>
   );
 };

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const CartPageContainer = styled.div`
+  margin-top: 100px;
   width: 1280px;
   margin-left: auto;
   margin-right: auto;

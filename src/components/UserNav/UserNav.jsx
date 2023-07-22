@@ -1,7 +1,12 @@
 import { useAuth } from 'hooks';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { logout } from 'redux/auth/operations';
+import {
+  UserNavLogoutBtn,
+  UserNavWrapper,
+  UserGreetingText,
+  UserNavLink,
+} from './UserNav.styled';
 
 export const UserNav = () => {
   const { user } = useAuth();
@@ -12,16 +17,16 @@ export const UserNav = () => {
   };
 
   return (
-    <>
-      <p>Hello, {`${user.name}`}</p>
+    <UserNavWrapper>
+      <UserGreetingText>Hello, {`${user.name}`}</UserGreetingText>
       {user.role === 'admin' ? (
-        <Link to="/admin">Admin</Link>
+        <UserNavLink to="/admin">Admin</UserNavLink>
       ) : (
-        <Link to="/cart">Cart</Link>
+        <UserNavLink to="/cart">Cart</UserNavLink>
       )}
-      <button type="button" onClick={handleLogoutClick}>
+      <UserNavLogoutBtn type="button" onClick={handleLogoutClick}>
         Logout
-      </button>
-    </>
+      </UserNavLogoutBtn>
+    </UserNavWrapper>
   );
 };

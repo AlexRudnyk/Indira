@@ -1,7 +1,15 @@
 import styled from 'styled-components';
 
 export const HeaderSection = styled.header`
-  /* background-color: lightgray; */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100vw;
+  background-color: white;
+  -webkit-box-shadow: 7px 15px 20px 0px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 7px 15px 20px 0px rgba(0, 0, 0, 0.6);
+  box-shadow: 7px 15px 20px 0px rgba(0, 0, 0, 0.6);
 `;
 
 export const Container = styled.div`
