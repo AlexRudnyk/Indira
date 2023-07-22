@@ -95,7 +95,7 @@ const authSlice = createSlice({
       .addCase(deleteFromCart.pending, handlePending)
       .addCase(deleteFromCart.fulfilled, (state, action) => {
         state.user.goodsInCart = state.user.goodsInCart.filter(
-          good => good._id !== action.payload
+          item => item !== action.payload
         );
         state.isRefreshing = false;
         state.error = false;

@@ -7,8 +7,8 @@ export const CartPage = () => {
   return (
     user.goodsInCart.length !== 0 && (
       <ul>
-        {user.goodsInCart.map(good => (
-          <CartItem good={good} key={good._id} />
+        {user.goodsInCart.map(goodId => (
+          <CartItem goodId={goodId} key={goodId} />
         ))}
       </ul>
     )

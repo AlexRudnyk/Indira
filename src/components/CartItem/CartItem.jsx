@@ -1,15 +1,23 @@
-import { useState } from 'react';
+import { useGoods } from 'hooks';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { deleteFromCart } from 'redux/auth/operations';
 import {
   CounterWrapper,
   CartItemLine,
   ButtonsWrapper,
 } from './CartItem.styled';
-import { deleteFromCart } from 'redux/auth/operations';
 
-export const CartItem = ({ good }) => {
-  const dispatch = useDispatch();
+export const CartItem = ({ goodId }) => {
+  const [good, setGood] = useState({});
   const [quantity, setQuantity] = useState(1);
+  const dispatch = useDispatch();
+  const { goods } = useGoods();
+
+  useEffect(() => {
+    const foundGood = goods.find(item => item._id === goodId);
+    setGood(foundGood);
+  }, [goodId, goods]);
 
   const handlePlusClick = () => {
     setQuantity(state => (state += 1));
@@ -20,7 +28,7 @@ export const CartItem = ({ good }) => {
   };
 
   const handleDeleteClick = () => {
-    dispatch(deleteFromCart(good._id));
+    dispatch(deleteFromCart(goodId));
   };
 
   return (
