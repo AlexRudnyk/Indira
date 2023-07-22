@@ -5,7 +5,14 @@ import { deleteFromCart } from 'redux/auth/operations';
 import {
   CounterWrapper,
   CartItemLine,
-  ButtonsWrapper,
+  ChosenGoodWrapper,
+  CartItemTitle,
+  CartItemText,
+  CartItemImg,
+  CartItemQuantityBtn,
+  CartItemQuantity,
+  CartItemSum,
+  CartItemDelBtn,
 } from './CartItem.styled';
 
 export const CartItem = ({ goodId }) => {
@@ -33,35 +40,35 @@ export const CartItem = ({ goodId }) => {
 
   return (
     <CartItemLine>
-      <div>
-        <img src={good.photoURL} alt="good in cart" width="100px" />
-      </div>
-      <div>
-        <h3>{good.title}</h3>
-        <p>{good.text}</p>
-        <p>{good.price} UAH</p>
-      </div>
-      <ButtonsWrapper>
-        <CounterWrapper>
-          <button
-            type="button"
-            onClick={handleMinusClick}
-            disabled={quantity <= 1}
-          >
-            -
-          </button>
-          <div>{quantity}</div>
-          <button type="button" onClick={handlePlusClick}>
-            +
-          </button>
-        </CounterWrapper>
+      <ChosenGoodWrapper>
         <div>
-          <button type="button" onClick={handleDeleteClick}>
-            Delete
-          </button>
+          <CartItemImg src={good.photoURL} alt="good in cart" width="100px" />
         </div>
-      </ButtonsWrapper>
-      <div>{good.price * quantity} UAH</div>
+        <div>
+          <CartItemTitle>{good.title}</CartItemTitle>
+          <CartItemText>{good.text}</CartItemText>
+          <p>{good.price} UAH</p>
+        </div>
+      </ChosenGoodWrapper>
+      <CounterWrapper>
+        <CartItemQuantityBtn
+          type="button"
+          onClick={handleMinusClick}
+          disabled={quantity <= 1}
+        >
+          -
+        </CartItemQuantityBtn>
+        <CartItemQuantity>{quantity}</CartItemQuantity>
+        <CartItemQuantityBtn type="button" onClick={handlePlusClick}>
+          +
+        </CartItemQuantityBtn>
+      </CounterWrapper>
+      <CartItemSum>{good.price * quantity} UAH</CartItemSum>
+      <div>
+        <CartItemDelBtn type="button" onClick={handleDeleteClick}>
+          Delete
+        </CartItemDelBtn>
+      </div>
     </CartItemLine>
   );
 };
