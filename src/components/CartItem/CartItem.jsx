@@ -15,16 +15,19 @@ import {
   CartItemDelBtn,
 } from './CartItem.styled';
 
-export const CartItem = ({ goodId }) => {
+export const CartItem = ({ goodId, getTotalSum }) => {
   const [good, setGood] = useState({});
   const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
   const { goods } = useGoods();
 
+  const sum = good.price * quantity;
+
   useEffect(() => {
     const foundGood = goods.find(item => item._id === goodId);
     setGood(foundGood);
-  }, [goodId, goods]);
+    getTotalSum(sum);
+  }, [getTotalSum, goodId, goods, sum]);
 
   const handlePlusClick = () => {
     setQuantity(state => (state += 1));
@@ -63,7 +66,7 @@ export const CartItem = ({ goodId }) => {
           +
         </CartItemQuantityBtn>
       </CounterWrapper>
-      <CartItemSum>{good.price * quantity} UAH</CartItemSum>
+      <CartItemSum>{sum} UAH</CartItemSum>
       <div>
         <CartItemDelBtn type="button" onClick={handleDeleteClick}>
           Delete

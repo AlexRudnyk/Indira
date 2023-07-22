@@ -1,12 +1,30 @@
 import { useAuth } from 'hooks';
 import { CartItem } from 'components/CartItem';
-import { CartPageContainer } from './CartPage.styled';
+import {
+  CartPageContainer,
+  TotalSumText,
+  MakeOrderWrapper,
+  OrderBtn,
+  TotalSumSpan,
+} from './CartPage.styled';
+import { useState } from 'react';
 
 export const CartPage = () => {
   const { user } = useAuth();
+  const [totalSum, setTotalSum] = useState('');
 
   const handleOrderClick = () => {
     console.log('Order is in process');
+  };
+
+  let totalSumArr = [];
+
+  const getTotalSum = sum => {
+    if (sum) {
+      totalSumArr.push(sum);
+    }
+    const totalSumRes = totalSumArr.reduce((acc, sum) => acc + sum, 0);
+    setTotalSum(totalSumRes);
   };
 
   return (
@@ -15,13 +33,21 @@ export const CartPage = () => {
         <>
           <ul>
             {user.goodsInCart.map(goodId => (
-              <CartItem goodId={goodId} key={goodId} />
+              <CartItem
+                goodId={goodId}
+                key={goodId}
+                getTotalSum={getTotalSum}
+              />
             ))}
           </ul>
-          <div>Total Summ</div>
-          <button type="button" onClick={handleOrderClick}>
-            Order
-          </button>
+          <MakeOrderWrapper>
+            <TotalSumText>
+              Your order is <TotalSumSpan>{totalSum}</TotalSumSpan> UAH
+            </TotalSumText>
+            <OrderBtn type="button" onClick={handleOrderClick}>
+              Make order
+            </OrderBtn>
+          </MakeOrderWrapper>
         </>
       ) : (
         <div>

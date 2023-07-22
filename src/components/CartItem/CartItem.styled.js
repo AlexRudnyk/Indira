@@ -6,22 +6,21 @@ export const CounterWrapper = styled.div`
   margin-right: 20px;
 `;
 
-// export const ButtonsWrapper = styled.div`
-//   display: flex;
-//   align-items: center;
-// `;
-
 export const CartItemLine = styled.li`
   display: flex;
   align-items: center;
-  &:not(:last-child) {
-    margin-bottom: 50px;
-  }
+  margin-bottom: 50px;
+  border-radius: 10px;
+  padding: 5px;
+  -webkit-box-shadow: 7px 15px 20px 0px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 7px 15px 20px 0px rgba(0, 0, 0, 0.6);
+  box-shadow: 7px 15px 20px 0px rgba(0, 0, 0, 0.6);
 `;
 
 export const ChosenGoodWrapper = styled.div`
   display: flex;
   width: 700px;
+  margin-right: 50px;
 `;
 
 export const CartItemTitle = styled.h3`
@@ -35,6 +34,7 @@ export const CartItemText = styled.p`
 export const CartItemImg = styled.img`
   width: 100px;
   margin-right: 20px;
+  border-radius: 10px;
 `;
 
 export const CartItemQuantityBtn = styled.button`
@@ -58,4 +58,5 @@ export const CartItemSum = styled.div`
 
 export const CartItemDelBtn = styled.button`
   padding: 5px;
+  cursor: pointer;
 `;
