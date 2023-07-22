@@ -19,14 +19,14 @@ export const UserNav = () => {
   return (
     <UserNavWrapper>
       <UserGreetingText>Hello, {`${user.name}`}</UserGreetingText>
+      <UserNavLogoutBtn type="button" onClick={handleLogoutClick}>
+        Logout
+      </UserNavLogoutBtn>
       {user.role === 'admin' ? (
         <UserNavLink to="/admin">Admin</UserNavLink>
       ) : (
         <UserNavLink to="/cart">Cart</UserNavLink>
       )}
-      <UserNavLogoutBtn type="button" onClick={handleLogoutClick}>
-        Logout
-      </UserNavLogoutBtn>
     </UserNavWrapper>
   );
 };

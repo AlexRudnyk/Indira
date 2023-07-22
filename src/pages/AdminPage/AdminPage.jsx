@@ -1,9 +1,17 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import { useState } from 'react';
 // import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { addGoods } from 'redux/goods/operations';
-import { AdminPageSection } from './AdminPage.styled';
+import {
+  AdminPageSection,
+  AdminPageWrapper,
+  AdminPageForm,
+  AdminPageInput,
+  AdminPageTextArea,
+  AdminPageImgInput,
+  AdminPageBtn,
+} from './AdminPage.styled';
 import { AdminGoodItem } from 'components/AdminGoodItem';
 import { useGoods } from 'hooks';
 
@@ -53,71 +61,71 @@ export const AdminPage = () => {
 
   return (
     <AdminPageSection>
-      <Formik
-        // validationSchema={schema}
-        initialValues={initialValues}
-        onSubmit={handleSubmit}
-      >
-        {({ values, setFieldValue }) => (
-          <Form>
-            <Field
-              value={title}
-              type="text"
-              name="title"
-              placeholder="Enter Titile"
-              onChange={e => setTitle(e.target.value)}
-            />
-            <ErrorMessage name="title" />
+      <AdminPageWrapper>
+        <Formik
+          // validationSchema={schema}
+          initialValues={initialValues}
+          onSubmit={handleSubmit}
+        >
+          {({ values, setFieldValue }) => (
+            <AdminPageForm>
+              <AdminPageInput
+                value={title}
+                type="text"
+                name="title"
+                placeholder="Enter Titile"
+                onChange={e => setTitle(e.target.value)}
+              />
+              <ErrorMessage name="title" />
 
-            <Field
-              value={text}
-              type="text"
-              name="text"
-              placeholder="Enter Text"
-              onChange={e => setText(e.target.value)}
-            />
-            <ErrorMessage name="text" />
+              <AdminPageInput
+                value={text}
+                type="text"
+                name="text"
+                placeholder="Enter Text"
+                onChange={e => setText(e.target.value)}
+              />
+              <ErrorMessage name="text" />
 
-            <textarea
-              value={description}
-              type="text"
-              name="description"
-              placeholder="Enter description"
-              onChange={e => setDescription(e.target.value)}
-            />
-            <ErrorMessage name="text" />
+              <AdminPageTextArea
+                value={description}
+                type="text"
+                name="description"
+                placeholder="Enter description"
+                onChange={e => setDescription(e.target.value)}
+              />
+              <ErrorMessage name="text" />
 
-            <input
-              type="file"
-              name="photoURL"
-              onChange={e => {
-                setFieldValue('photoURL', e.target.files[0]);
-                setPhoto(e.target.files[0]);
-              }}
-              accept="image/*,.png,.jpg,.gif,.web"
-            />
-            <ErrorMessage name="photoURL" />
+              <AdminPageImgInput
+                type="file"
+                name="photoURL"
+                onChange={e => {
+                  setFieldValue('photoURL', e.target.files[0]);
+                  setPhoto(e.target.files[0]);
+                }}
+                accept="image/*,.png,.jpg,.gif,.web"
+              />
+              <ErrorMessage name="photoURL" />
 
-            <Field
-              value={price}
-              type="number"
-              name="price"
-              placeholder="Enter Price"
-              onChange={e => setPrice(e.target.value)}
-            />
-            <ErrorMessage name="price" />
+              <AdminPageInput
+                value={price}
+                type="number"
+                name="price"
+                placeholder="Enter Price"
+                onChange={e => setPrice(e.target.value)}
+              />
+              <ErrorMessage name="price" />
 
-            <button type="submit">Submit</button>
-          </Form>
-        )}
-      </Formik>
-      <ul>
-        {goods.map(good => (
-          <li key={good._id}>
-            <AdminGoodItem good={good} />
-          </li>
-        ))}
-      </ul>
+              <AdminPageBtn type="submit">Submit</AdminPageBtn>
+            </AdminPageForm>
+          )}
+        </Formik>
+        <ul>
+          {goods.map(good => (
+            <AdminGoodItem good={good} key={good._id} />
+          ))}
+        </ul>
+      </AdminPageWrapper>
     </AdminPageSection>
   );
 };

@@ -1,6 +1,13 @@
 import { useDispatch } from 'react-redux';
 
-import { AdminGoodItemWrapper, AdminGoodItemImg } from './AdminGoodItem.styled';
+import {
+  AdminGoodItemWrapper,
+  AdminGoodItemImg,
+  AdminGoodItemLine,
+  AdminGoodItemText,
+  AdminGoodItemBtn,
+  AdminTextWrapper,
+} from './AdminGoodItem.styled';
 import { deleteGood } from 'redux/goods/operations';
 
 export const AdminGoodItem = ({ good }) => {
@@ -15,16 +22,20 @@ export const AdminGoodItem = ({ good }) => {
   };
 
   return (
-    <AdminGoodItemWrapper>
-      <AdminGoodItemImg src={good.photoURL} alt="good" />
-      <p>{good.title}</p>
-      <p>{good.price} UAH</p>
-      <button type="button" onClick={handleEditGootClick}>
-        Edit
-      </button>
-      <button type="button" onClick={handleDeleteGoodClick}>
-        Delete
-      </button>
-    </AdminGoodItemWrapper>
+    <AdminGoodItemLine>
+      <AdminGoodItemWrapper>
+        <AdminGoodItemImg src={good.photoURL} alt="good" />
+        <AdminTextWrapper>
+          <AdminGoodItemText>{good.title}</AdminGoodItemText>
+          <AdminGoodItemText>{good.price} UAH</AdminGoodItemText>
+        </AdminTextWrapper>
+        <AdminGoodItemBtn type="button" onClick={handleEditGootClick}>
+          Edit
+        </AdminGoodItemBtn>
+        <AdminGoodItemBtn type="button" onClick={handleDeleteGoodClick}>
+          Delete
+        </AdminGoodItemBtn>
+      </AdminGoodItemWrapper>
+    </AdminGoodItemLine>
   );
 };

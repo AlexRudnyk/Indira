@@ -8,6 +8,7 @@ export const UserNavWrapper = styled.div`
 
 export const UserNavLogoutBtn = styled.button`
   padding: 5px;
+  margin-right: 20px;
   cursor: pointer;
 `;
 
@@ -16,6 +17,5 @@ export const UserGreetingText = styled.p`
 `;
 
 export const UserNavLink = styled(Link)`
-  margin-right: 20px;
   color: inherit;
 `;
