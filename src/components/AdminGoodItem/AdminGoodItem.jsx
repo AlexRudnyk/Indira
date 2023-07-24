@@ -8,13 +8,24 @@ import {
   AdminGoodItemBtn,
   AdminTextWrapper,
 } from './AdminGoodItem.styled';
-import { deleteGood } from 'redux/goods/operations';
+import { deleteGood, editGood } from 'redux/goods/operations';
+import { useState } from 'react';
+import { ModalEditGood } from 'components/ModalEditGood';
 
 export const AdminGoodItem = ({ good }) => {
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const dispatch = useDispatch();
 
-  const handleEditGootClick = () => {
-    console.log('Edit good');
+  const handleEditGoodClick = () => {
+    setIsEditModalOpen(!isEditModalOpen);
+  };
+
+  const handleEditModalClose = () => {
+    setIsEditModalOpen(!isEditModalOpen);
+  };
+
+  const handleEditModalSubmit = values => {
+    dispatch(editGood(values));
   };
 
   const handleDeleteGoodClick = () => {
@@ -29,12 +40,19 @@ export const AdminGoodItem = ({ good }) => {
           <AdminGoodItemText>{good.title}</AdminGoodItemText>
           <AdminGoodItemText>{good.price} UAH</AdminGoodItemText>
         </AdminTextWrapper>
-        <AdminGoodItemBtn type="button" onClick={handleEditGootClick}>
+        <AdminGoodItemBtn type="button" onClick={handleEditGoodClick}>
           Edit
         </AdminGoodItemBtn>
         <AdminGoodItemBtn type="button" onClick={handleDeleteGoodClick}>
           Delete
         </AdminGoodItemBtn>
+        {isEditModalOpen && (
+          <ModalEditGood
+            onClose={handleEditModalClose}
+            onSubmit={handleEditModalSubmit}
+            good={good}
+          />
+        )}
       </AdminGoodItemWrapper>
     </AdminGoodItemLine>
   );

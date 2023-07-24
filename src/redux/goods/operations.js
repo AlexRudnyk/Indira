@@ -41,6 +41,18 @@ export const addGoods = createAsyncThunk(
   }
 );
 
+export const editGood = createAsyncThunk(
+  'goods/editGood',
+  async (values, thunkAPI) => {
+    try {
+      const { data } = await axios.patch('/api/goods/edit', values);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);
+
 export const deleteGood = createAsyncThunk(
   'goods/deleteGood',
   async (id, thunkAPI) => {

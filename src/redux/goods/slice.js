@@ -1,5 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addGoods, getAllGoods, getGoodById, deleteGood } from './operations';
+import {
+  addGoods,
+  getAllGoods,
+  getGoodById,
+  editGood,
+  deleteGood,
+} from './operations';
 
 const initialState = {
   goods: [],
@@ -46,6 +52,16 @@ const goodsSlice = createSlice({
         state.error = false;
       })
       .addCase(getGoodById.rejected, handleRejected)
+      .addCase(editGood.pending, handlePending)
+      .addCase(editGood.fulfilled, (state, action) => {
+        const updGood = state.goods.findIndex(
+          good => good._id === action.payload.id
+        );
+        state.goods = [{ ...state.goods[updGood], ...action.payload }];
+        state.isRefreshing = false;
+        state.error = false;
+      })
+      .addCase(editGood.rejected, handleRejected)
       .addCase(deleteGood.pending, handlePending)
       .addCase(deleteGood.fulfilled, (state, action) => {
         state.goods = state.goods.filter(good => good._id !== action.payload);

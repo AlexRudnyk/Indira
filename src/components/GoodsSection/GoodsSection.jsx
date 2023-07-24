@@ -31,14 +31,6 @@ export const GoodsSection = () => {
               </GoodsItem>
             ))}
           </GoodsList>
-
-          {/* <GoodsList>
-            {goods.map(good => (
-              <GoodsItem key={good._id}>
-                <GoodItem good={good} />
-              </GoodsItem>
-            ))}
-          </GoodsList> */}
         </>
       )}
     </GoodsSectionContainer>

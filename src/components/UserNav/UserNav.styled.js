@@ -17,12 +17,13 @@ export const UserGreetingText = styled.p`
 `;
 
 export const UserNavLink = styled(Link)`
+  display: block;
   color: inherit;
   padding: 5px;
   background-color: lightgrey;
   border-radius: 5px;
   border: 1px solid grey;
-  width: 50px;
+  width: 45px;
   text-align: center;
 `;
 
@@ -35,8 +36,8 @@ export const GoodsInCartIndicator = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  top: -18px;
-  right: -13px;
+  top: -10px;
+  right: -10px;
   width: 20px;
   border-radius: 50%;
   background-color: red;
