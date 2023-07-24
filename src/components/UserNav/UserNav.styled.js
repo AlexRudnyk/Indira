@@ -18,4 +18,33 @@ export const UserGreetingText = styled.p`
 
 export const UserNavLink = styled(Link)`
   color: inherit;
+  padding: 5px;
+  background-color: lightgrey;
+  border-radius: 5px;
+  border: 1px solid grey;
+  width: 50px;
+  text-align: center;
+`;
+
+export const CartLinkWrapper = styled.div`
+  position: relative;
+`;
+
+export const GoodsInCartIndicator = styled.div`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: -18px;
+  right: -13px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: red;
+  padding: 4px 2px;
+`;
+
+export const IndicatorText = styled.p`
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
 `;

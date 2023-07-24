@@ -6,6 +6,9 @@ import {
   UserNavWrapper,
   UserGreetingText,
   UserNavLink,
+  CartLinkWrapper,
+  GoodsInCartIndicator,
+  IndicatorText,
 } from './UserNav.styled';
 
 export const UserNav = () => {
@@ -25,7 +28,14 @@ export const UserNav = () => {
       {user.role === 'admin' ? (
         <UserNavLink to="/admin">Admin</UserNavLink>
       ) : (
-        <UserNavLink to="/cart">Cart</UserNavLink>
+        <CartLinkWrapper>
+          <UserNavLink to="/cart">Cart</UserNavLink>
+          {user.goodsInCart.length !== 0 && (
+            <GoodsInCartIndicator>
+              <IndicatorText>{user.goodsInCart?.length}</IndicatorText>
+            </GoodsInCartIndicator>
+          )}
+        </CartLinkWrapper>
       )}
     </UserNavWrapper>
   );

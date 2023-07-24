@@ -7,6 +7,12 @@ export const CartPageContainer = styled.div`
   margin-right: auto;
 `;
 
+export const CartPageTitle = styled.h3`
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 30px;
+`;
+
 export const TotalSumText = styled.p`
   display: flex;
   align-items: center;

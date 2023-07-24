@@ -34,6 +34,7 @@ export const AdminPage = () => {
   const [photo, setPhoto] = useState(null);
   const [price, setPrice] = useState('');
   const [description, setDescription] = useState('');
+  const goodsReverse = [...goods].reverse();
 
   const initialValues = {
     title: '',
@@ -121,7 +122,7 @@ export const AdminPage = () => {
           )}
         </Formik>
         <ul>
-          {goods.map(good => (
+          {goodsReverse.map(good => (
             <AdminGoodItem good={good} key={good._id} />
           ))}
         </ul>

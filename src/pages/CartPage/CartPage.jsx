@@ -2,6 +2,7 @@ import { useAuth } from 'hooks';
 import { CartItem } from 'components/CartItem';
 import {
   CartPageContainer,
+  CartPageTitle,
   TotalSumText,
   MakeOrderWrapper,
   OrderBtn,
@@ -29,6 +30,7 @@ export const CartPage = () => {
 
   return (
     <CartPageContainer>
+      <CartPageTitle>Your goods in cart</CartPageTitle>
       {user.goodsInCart.length !== 0 ? (
         <>
           <ul>
