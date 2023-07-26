@@ -17,6 +17,7 @@ export const GoodDetailsWrapper = styled.div`
 `;
 
 export const GoodDetailsImg = styled.img`
+  width: 400px;
   margin-right: 50px;
   border-radius: 20px;
 `;

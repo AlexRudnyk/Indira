@@ -8,12 +8,11 @@ import {
   AdminPageWrapper,
   AdminPageForm,
   AdminPageInput,
-  AdminPageTextArea,
-  AdminPageImgInput,
   AdminPageBtn,
 } from './AdminPage.styled';
 import { AdminGoodItem } from 'components/AdminGoodItem';
 import { useGoods } from 'hooks';
+import { ImageUpload } from 'components/ImageUpload';
 
 // const schema = yup.object().shape({
 //   title: yup
@@ -29,10 +28,6 @@ import { useGoods } from 'hooks';
 export const AdminPage = () => {
   const dispatch = useDispatch();
   const { goods } = useGoods();
-  const [title, setTitle] = useState('');
-  const [text, setText] = useState('');
-  const [photo, setPhoto] = useState(null);
-  const [price, setPrice] = useState('');
   const [description, setDescription] = useState('');
   const goodsReverse = [...goods].reverse();
 
@@ -44,20 +39,10 @@ export const AdminPage = () => {
     price: '',
   };
 
-  const formData = new FormData();
-  formData.append('title', title);
-  formData.append('text', text);
-  formData.append('description', description);
-  formData.append('photoURL', photo);
-  formData.append('price', price);
-
-  const handleSubmit = (values, actions) => {
-    dispatch(addGoods(formData));
-    setTitle('');
-    setText('');
+  const handleSubmit = (values, { resetForm }) => {
+    dispatch(addGoods(values));
     setDescription('');
-    setPhoto(null);
-    setPrice('');
+    resetForm();
   };
 
   return (
@@ -70,50 +55,39 @@ export const AdminPage = () => {
         >
           {({ values, setFieldValue }) => (
             <AdminPageForm>
+              <ImageUpload setFieldValue={setFieldValue} />
+
               <AdminPageInput
-                value={title}
                 type="text"
                 name="title"
                 placeholder="Enter Titile"
-                onChange={e => setTitle(e.target.value)}
               />
               <ErrorMessage name="title" />
 
               <AdminPageInput
-                value={text}
                 type="text"
                 name="text"
                 placeholder="Enter Text"
-                onChange={e => setText(e.target.value)}
               />
               <ErrorMessage name="text" />
 
-              <AdminPageTextArea
+              <AdminPageInput
+                as="textarea"
                 value={description}
                 type="text"
                 name="description"
                 placeholder="Enter description"
-                onChange={e => setDescription(e.target.value)}
-              />
-              <ErrorMessage name="text" />
-
-              <AdminPageImgInput
-                type="file"
-                name="photoURL"
                 onChange={e => {
-                  setFieldValue('photoURL', e.target.files[0]);
-                  setPhoto(e.target.files[0]);
+                  setFieldValue('description', e.target.value);
+                  setDescription(e.target.value);
                 }}
-                accept="image/*,.png,.jpg,.gif,.web"
               />
-              <ErrorMessage name="photoURL" />
+              <ErrorMessage name="description" />
 
               <AdminPageInput
-                value={price}
                 type="number"
                 name="price"
                 placeholder="Enter Price"
-                onChange={e => setPrice(e.target.value)}
               />
               <ErrorMessage name="price" />
 
