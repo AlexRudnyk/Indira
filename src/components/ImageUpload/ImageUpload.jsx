@@ -5,7 +5,9 @@ import {
   UploadText,
   PreviewWrapper,
   PreviewImg,
+  PreviewImgSuccess,
   PreviewBtn,
+  PreviewImgWrapper,
 } from './ImageUpload.styled';
 
 export const ImageUpload = ({ setFieldValue }) => {
@@ -75,12 +77,14 @@ export const ImageUpload = ({ setFieldValue }) => {
           )}
           {preview && (
             <PreviewWrapper>
-              {!isUploaded ? (
+              <PreviewImgWrapper>
                 <PreviewImg src={preview} alt="preview" />
-              ) : (
-                <PreviewImg src={Success} alt="Success" />
-              )}
-
+                <PreviewImgSuccess
+                  src={Success}
+                  alt="Success"
+                  isUploaded={isUploaded}
+                />
+              </PreviewImgWrapper>
               <div>
                 <PreviewBtn
                   type="button"
