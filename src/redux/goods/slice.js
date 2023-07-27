@@ -54,10 +54,10 @@ const goodsSlice = createSlice({
       .addCase(getGoodById.rejected, handleRejected)
       .addCase(editGood.pending, handlePending)
       .addCase(editGood.fulfilled, (state, action) => {
-        const updGood = state.goods.findIndex(
+        const index = state.goods.findIndex(
           good => good._id === action.payload.id
         );
-        state.goods = [{ ...state.goods[updGood], ...action.payload }];
+        state.goods.splice(index, 1, action.payload);
         state.isRefreshing = false;
         state.error = false;
       })
