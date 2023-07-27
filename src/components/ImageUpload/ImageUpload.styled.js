@@ -36,7 +36,7 @@ export const PreviewImgSuccess = styled.img`
   top: 0;
   right: 0;
   width: 20px;
-  display: ${props => (props.isUploaded ? 'block' : 'none')};
+  display: ${props => (props.$isUploaded ? 'block' : 'none')};
 `;
 
 export const PreviewBtn = styled.button`

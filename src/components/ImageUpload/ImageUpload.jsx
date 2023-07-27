@@ -82,7 +82,7 @@ export const ImageUpload = ({ setFieldValue }) => {
                 <PreviewImgSuccess
                   src={Success}
                   alt="Success"
-                  isUploaded={isUploaded}
+                  $isUploaded={isUploaded}
                 />
               </PreviewImgWrapper>
               <div>
