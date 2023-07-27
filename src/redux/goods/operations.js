@@ -46,7 +46,6 @@ export const editGood = createAsyncThunk(
   async (values, thunkAPI) => {
     try {
       const { data } = await axios.patch('/api/goods/edit', values);
-      console.log('DATA', data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);

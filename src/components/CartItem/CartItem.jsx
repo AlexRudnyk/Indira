@@ -15,7 +15,7 @@ import {
   CartItemDelBtn,
 } from './CartItem.styled';
 
-export const CartItem = ({ goodId, getTotalSum }) => {
+export const CartItem = ({ goodId, getTotalSum, getOrder }) => {
   const [good, setGood] = useState({});
   const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
@@ -24,10 +24,13 @@ export const CartItem = ({ goodId, getTotalSum }) => {
   const sum = good.price * quantity;
 
   useEffect(() => {
-    const foundGood = goods.find(item => item._id === goodId);
-    setGood(foundGood);
+    const { _id, title, text, description, photoURL, price } = goods.find(
+      item => item._id === goodId
+    );
+    setGood({ _id, title, text, description, photoURL, price });
     getTotalSum(sum);
-  }, [getTotalSum, goodId, goods, sum]);
+    getOrder({ title, price, quantity });
+  }, [getOrder, getTotalSum, goodId, goods, quantity, sum]);
 
   const handlePlusClick = () => {
     setQuantity(state => (state += 1));

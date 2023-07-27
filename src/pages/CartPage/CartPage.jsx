@@ -9,16 +9,18 @@ import {
   TotalSumSpan,
 } from './CartPage.styled';
 import { useState } from 'react';
+import axios from 'axios';
 
 export const CartPage = () => {
   const { user } = useAuth();
   const [totalSum, setTotalSum] = useState('');
 
-  const handleOrderClick = () => {
-    console.log('Order is in process');
-  };
-
   let totalSumArr = [];
+  let goodsArray = [];
+
+  const handleGetOrder = ({ title, price, quantity }) => {
+    goodsArray.push({ title, price, quantity });
+  };
 
   const getTotalSum = sum => {
     if (sum) {
@@ -26,6 +28,24 @@ export const CartPage = () => {
     }
     const totalSumRes = totalSumArr.reduce((acc, sum) => acc + sum, 0);
     setTotalSum(totalSumRes);
+  };
+
+  const handleOrderClick = async () => {
+    const mailBody = {
+      user,
+      goods: JSON.stringify(goodsArray),
+      totalSum,
+    };
+
+    try {
+      const { data } = await axios.post(
+        'http://localhost:3030/api/users/order',
+        mailBody
+      );
+      return data;
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   return (
@@ -39,6 +59,7 @@ export const CartPage = () => {
                 goodId={goodId}
                 key={goodId}
                 getTotalSum={getTotalSum}
+                getOrder={handleGetOrder}
               />
             ))}
           </ul>
