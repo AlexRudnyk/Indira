@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { addGoods } from 'redux/goods/operations';
 import {
   AdminPageSection,
+  AdminPageContainer,
   AdminPageWrapper,
   AdminPageForm,
   AdminPageInput,
@@ -48,60 +49,62 @@ export const AdminPage = () => {
 
   return (
     <AdminPageSection>
-      <AdminPageWrapper>
-        <Formik
-          validationSchema={schema}
-          initialValues={initialValues}
-          onSubmit={handleSubmit}
-        >
-          {({ values, setFieldValue }) => (
-            <AdminPageForm>
-              <ImageUpload setFieldValue={setFieldValue} />
+      <AdminPageContainer>
+        <AdminPageWrapper>
+          <Formik
+            validationSchema={schema}
+            initialValues={initialValues}
+            onSubmit={handleSubmit}
+          >
+            {({ values, setFieldValue }) => (
+              <AdminPageForm>
+                <ImageUpload setFieldValue={setFieldValue} />
 
-              <AdminPageInput
-                type="text"
-                name="title"
-                placeholder="Enter Titile"
-              />
-              <ErrorMessage name="title" />
+                <AdminPageInput
+                  type="text"
+                  name="title"
+                  placeholder="Enter Titile"
+                />
+                <ErrorMessage name="title" />
 
-              <AdminPageInput
-                type="text"
-                name="text"
-                placeholder="Enter Text"
-              />
-              <ErrorMessage name="text" />
+                <AdminPageInput
+                  type="text"
+                  name="text"
+                  placeholder="Enter Text"
+                />
+                <ErrorMessage name="text" />
 
-              <AdminPageTextArea
-                as="textarea"
-                value={description}
-                type="text"
-                name="description"
-                placeholder="Enter description"
-                onChange={e => {
-                  setFieldValue('description', e.target.value);
-                  setDescription(e.target.value);
-                }}
-              />
-              <ErrorMessage name="description" />
+                <AdminPageTextArea
+                  as="textarea"
+                  value={description}
+                  type="text"
+                  name="description"
+                  placeholder="Enter description"
+                  onChange={e => {
+                    setFieldValue('description', e.target.value);
+                    setDescription(e.target.value);
+                  }}
+                />
+                <ErrorMessage name="description" />
 
-              <AdminPageInput
-                type="number"
-                name="price"
-                placeholder="Enter Price"
-              />
-              <ErrorMessage name="price" />
+                <AdminPageInput
+                  type="number"
+                  name="price"
+                  placeholder="Enter Price"
+                />
+                <ErrorMessage name="price" />
 
-              <AdminPageBtn type="submit">Submit</AdminPageBtn>
-            </AdminPageForm>
-          )}
-        </Formik>
-        <ul>
-          {goodsReverse.map(good => (
-            <AdminGoodItem good={good} key={good._id} />
-          ))}
-        </ul>
-      </AdminPageWrapper>
+                <AdminPageBtn type="submit">Submit</AdminPageBtn>
+              </AdminPageForm>
+            )}
+          </Formik>
+          <ul>
+            {goodsReverse.map(good => (
+              <AdminGoodItem good={good} key={good._id} />
+            ))}
+          </ul>
+        </AdminPageWrapper>
+      </AdminPageContainer>
     </AdminPageSection>
   );
 };

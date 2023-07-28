@@ -1,14 +1,19 @@
 import { Field, Form } from 'formik';
 import styled from 'styled-components';
 
+export const LoginPageSection = styled.section`
+  background: linear-gradient(to bottom right, #b36c40, white);
+  height: 100vh;
+`;
+
 export const LoginPageContainer = styled.div`
+  padding-top: 130px;
   width: 1280px;
   margin-left: auto;
   margin-right: auto;
 `;
 
 export const LoginPageWrapper = styled.div`
-  margin-top: 130px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -58,6 +63,7 @@ export const LoginPageBtn = styled.button`
 `;
 
 export const LoginFormWrapper = styled.div`
+  background-color: #fff;
   width: 400px;
   padding: 20px;
   border-radius: 20px;

@@ -1,10 +1,12 @@
 import { GoodsSection } from 'components/GoodsSection';
-import { HomePageWrapper } from './HomePage.styled';
+import { HomePageWrapper, HomePageSection } from './HomePage.styled';
 
 export const HomePage = () => {
   return (
-    <HomePageWrapper>
-      <GoodsSection />
-    </HomePageWrapper>
+    <HomePageSection>
+      <HomePageWrapper>
+        <GoodsSection />
+      </HomePageWrapper>
+    </HomePageSection>
   );
 };

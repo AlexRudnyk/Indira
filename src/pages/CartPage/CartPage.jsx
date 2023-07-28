@@ -2,6 +2,7 @@ import { useAuth } from 'hooks';
 import { useDispatch } from 'react-redux';
 import { CartItem } from 'components/CartItem';
 import {
+  CartPageSection,
   CartPageContainer,
   CartPageTitle,
   TotalSumText,
@@ -56,35 +57,37 @@ export const CartPage = () => {
 
   return (
     !isRefreshing && (
-      <CartPageContainer>
-        {user.goodsInCart.length !== 0 ? (
-          <>
-            <CartPageTitle>Your goods in cart</CartPageTitle>
-            <ul>
-              {user.goodsInCart.map(goodId => (
-                <CartItem
-                  goodId={goodId}
-                  key={goodId}
-                  getTotalSum={getTotalSum}
-                  getOrder={handleGetOrder}
-                />
-              ))}
-            </ul>
-            <MakeOrderWrapper>
-              <TotalSumText>
-                Your order is <TotalSumSpan>{totalSum}</TotalSumSpan> UAH
-              </TotalSumText>
-              <OrderBtn type="button" onClick={handleOrderClick}>
-                Make order
-              </OrderBtn>
-            </MakeOrderWrapper>
-          </>
-        ) : (
-          <EmptyCartMessageWrapper>
-            <EmptyCartMessage>Your cart is empty</EmptyCartMessage>
-          </EmptyCartMessageWrapper>
-        )}
-      </CartPageContainer>
+      <CartPageSection>
+        <CartPageContainer>
+          {user.goodsInCart.length !== 0 ? (
+            <>
+              <CartPageTitle>Your goods in cart</CartPageTitle>
+              <ul>
+                {user.goodsInCart.map(goodId => (
+                  <CartItem
+                    goodId={goodId}
+                    key={goodId}
+                    getTotalSum={getTotalSum}
+                    getOrder={handleGetOrder}
+                  />
+                ))}
+              </ul>
+              <MakeOrderWrapper>
+                <TotalSumText>
+                  Your order is <TotalSumSpan>{totalSum}</TotalSumSpan> UAH
+                </TotalSumText>
+                <OrderBtn type="button" onClick={handleOrderClick}>
+                  Make order
+                </OrderBtn>
+              </MakeOrderWrapper>
+            </>
+          ) : (
+            <EmptyCartMessageWrapper>
+              <EmptyCartMessage>Your cart is empty</EmptyCartMessage>
+            </EmptyCartMessageWrapper>
+          )}
+        </CartPageContainer>
+      </CartPageSection>
     )
   );
 };

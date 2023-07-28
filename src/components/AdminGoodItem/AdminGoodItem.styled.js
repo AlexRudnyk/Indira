@@ -7,6 +7,7 @@ export const AdminGoodItemLine = styled.li`
   }
   border-radius: 10px;
   padding: 10px;
+  background-color: #fff;
   -webkit-box-shadow: 7px 15px 20px 0px rgba(0, 0, 0, 0.6);
   -moz-box-shadow: 7px 15px 20px 0px rgba(0, 0, 0, 0.6);
   box-shadow: 7px 15px 20px 0px rgba(0, 0, 0, 0.6);

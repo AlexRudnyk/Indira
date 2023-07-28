@@ -2,14 +2,19 @@ import { Field, Form } from 'formik';
 import styled from 'styled-components';
 
 export const AdminPageSection = styled.section`
+  background: linear-gradient(to bottom right, #b36c40, white);
+`;
+
+export const AdminPageContainer = styled.div`
   width: 1280px;
+  padding-top: 130px;
+  padding-bottom: 30px;
   margin-left: auto;
   margin-right: auto;
 `;
 
 export const AdminPageWrapper = styled.div`
   display: flex;
-  margin-top: 130px;
 `;
 
 export const AdminPageForm = styled(Form)`
@@ -20,6 +25,7 @@ export const AdminPageForm = styled(Form)`
   margin-right: 100px;
   padding: 20px;
   border-radius: 20px;
+  background-color: #fff;
 
   -webkit-box-shadow: 7px 15px 20px 0px rgba(0, 0, 0, 0.6);
   -moz-box-shadow: 7px 15px 20px 0px rgba(0, 0, 0, 0.6);

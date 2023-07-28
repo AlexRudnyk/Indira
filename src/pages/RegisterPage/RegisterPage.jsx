@@ -3,6 +3,7 @@ import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { signup, login } from '../../redux/auth/operations';
 import {
+  RegisterPageSection,
   RegisterPageContainer,
   RegisterPageWrapper,
   RegisterPageTitle,
@@ -73,49 +74,51 @@ export const RegisterPage = () => {
   };
 
   return (
-    <RegisterPageContainer>
-      <RegisterPageWrapper>
-        <RegisterPageTitle>Please Register</RegisterPageTitle>
-        <RegisterFormWrapper>
-          <Formik
-            initialValues={initialValues}
-            onSubmit={handleSubmit}
-            validationSchema={schema}
-          >
-            <RegisterPageForm>
-              <RegisterPageInput
-                type="text"
-                name="name"
-                placeholder="John Doe"
-              />
-              <ErrorMessage name="name" />
+    <RegisterPageSection>
+      <RegisterPageContainer>
+        <RegisterPageWrapper>
+          <RegisterPageTitle>Please Register</RegisterPageTitle>
+          <RegisterFormWrapper>
+            <Formik
+              initialValues={initialValues}
+              onSubmit={handleSubmit}
+              validationSchema={schema}
+            >
+              <RegisterPageForm>
+                <RegisterPageInput
+                  type="text"
+                  name="name"
+                  placeholder="John Doe"
+                />
+                <ErrorMessage name="name" />
 
-              <RegisterPageInput
-                type="text"
-                name="phone"
-                placeholder="+380671112233"
-              />
-              <ErrorMessage name="phone" />
+                <RegisterPageInput
+                  type="text"
+                  name="phone"
+                  placeholder="+380671112233"
+                />
+                <ErrorMessage name="phone" />
 
-              <RegisterPageInput
-                type="email"
-                name="email"
-                placeholder="example@mail.com"
-              />
-              <ErrorMessage name="email" />
+                <RegisterPageInput
+                  type="email"
+                  name="email"
+                  placeholder="example@mail.com"
+                />
+                <ErrorMessage name="email" />
 
-              <RegisterPageInput
-                type="password"
-                name="password"
-                placeholder="Please enter your password"
-              />
-              <ErrorMessage name="password" />
+                <RegisterPageInput
+                  type="password"
+                  name="password"
+                  placeholder="Please enter your password"
+                />
+                <ErrorMessage name="password" />
 
-              <RegisterPageBtn type="submit">Register</RegisterPageBtn>
-            </RegisterPageForm>
-          </Formik>
-        </RegisterFormWrapper>
-      </RegisterPageWrapper>
-    </RegisterPageContainer>
+                <RegisterPageBtn type="submit">Register</RegisterPageBtn>
+              </RegisterPageForm>
+            </Formik>
+          </RegisterFormWrapper>
+        </RegisterPageWrapper>
+      </RegisterPageContainer>
+    </RegisterPageSection>
   );
 };

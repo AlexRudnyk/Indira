@@ -1,14 +1,19 @@
 import { Field, Form } from 'formik';
 import styled from 'styled-components';
 
+export const RegisterPageSection = styled.section`
+  background: linear-gradient(to bottom right, #b36c40, white);
+  height: 100vh;
+`;
+
 export const RegisterPageContainer = styled.div`
   width: 1280px;
+  padding-top: 130px;
   margin-left: auto;
   margin-right: auto;
 `;
 
 export const RegisterPageWrapper = styled.div`
-  margin-top: 130px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -58,6 +63,7 @@ export const RegisterPageBtn = styled.button`
 `;
 
 export const RegisterFormWrapper = styled.div`
+  background-color: #fff;
   width: 400px;
   padding: 20px;
   border-radius: 20px;

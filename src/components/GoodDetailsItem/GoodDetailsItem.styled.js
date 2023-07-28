@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const GoodDetailsContainer = styled.div`
-  margin-top: 130px;
+  padding-top: 130px;
   width: 1280px;
   margin-left: auto;
   margin-right: auto;
@@ -9,6 +9,7 @@ export const GoodDetailsContainer = styled.div`
 
 export const GoodDetailsWrapper = styled.div`
   display: flex;
+  background-color: #fff;
   border-radius: 20px;
   padding: 20px;
   -webkit-box-shadow: 7px 15px 20px 0px rgba(0, 0, 0, 0.6);

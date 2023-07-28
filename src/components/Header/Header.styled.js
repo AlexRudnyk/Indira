@@ -20,6 +20,7 @@ export const Container = styled.div`
 `;
 
 export const HeaderWrapper = styled.div`
+  position: relative;
   display: flex;
   align-content: center;
   justify-content: space-between;
@@ -33,6 +34,15 @@ export const Logo = styled(Link)`
   color: brown;
   font-family: 'Dancing Script', cursive;
   font-family: 'Great Vibes', cursive;
+`;
+
+export const LogoImg = styled.img`
+  position: absolute;
+  top: 5px;
+  left: 20px;
+  width: 80px;
+  z-index: -10;
+  opacity: 0.6;
 `;
 
 export const NavWrapper = styled.div`

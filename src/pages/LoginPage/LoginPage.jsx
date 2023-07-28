@@ -3,6 +3,7 @@ import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { login } from '../../redux/auth/operations';
 import {
+  LoginPageSection,
   LoginPageContainer,
   LoginPageForm,
   LoginPageInput,
@@ -55,35 +56,37 @@ export const LoginPage = () => {
   };
 
   return (
-    <LoginPageContainer>
-      <LoginPageWrapper>
-        <LoginPageTitle>Please Login</LoginPageTitle>
-        <LoginFormWrapper>
-          <Formik
-            initialValues={initialValues}
-            onSubmit={handleSubmit}
-            validationSchema={schema}
-          >
-            <LoginPageForm>
-              <LoginPageInput
-                type="email"
-                name="email"
-                placeholder="example@mail.com"
-              />
-              <ErrorMessage name="email" />
+    <LoginPageSection>
+      <LoginPageContainer>
+        <LoginPageWrapper>
+          <LoginPageTitle>Please Login</LoginPageTitle>
+          <LoginFormWrapper>
+            <Formik
+              initialValues={initialValues}
+              onSubmit={handleSubmit}
+              validationSchema={schema}
+            >
+              <LoginPageForm>
+                <LoginPageInput
+                  type="email"
+                  name="email"
+                  placeholder="example@mail.com"
+                />
+                <ErrorMessage name="email" />
 
-              <LoginPageInput
-                type="password"
-                name="password"
-                placeholder="Please enter your password"
-              />
-              <ErrorMessage name="password" />
+                <LoginPageInput
+                  type="password"
+                  name="password"
+                  placeholder="Please enter your password"
+                />
+                <ErrorMessage name="password" />
 
-              <LoginPageBtn type="submit">Login</LoginPageBtn>
-            </LoginPageForm>
-          </Formik>
-        </LoginFormWrapper>
-      </LoginPageWrapper>
-    </LoginPageContainer>
+                <LoginPageBtn type="submit">Login</LoginPageBtn>
+              </LoginPageForm>
+            </Formik>
+          </LoginFormWrapper>
+        </LoginPageWrapper>
+      </LoginPageContainer>
+    </LoginPageSection>
   );
 };

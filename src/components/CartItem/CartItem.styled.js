@@ -12,6 +12,8 @@ export const CartItemLine = styled.li`
   margin-bottom: 50px;
   border-radius: 10px;
   padding: 5px;
+  background-color: #fff;
+
   -webkit-box-shadow: 7px 15px 20px 0px rgba(0, 0, 0, 0.6);
   -moz-box-shadow: 7px 15px 20px 0px rgba(0, 0, 0, 0.6);
   box-shadow: 7px 15px 20px 0px rgba(0, 0, 0, 0.6);

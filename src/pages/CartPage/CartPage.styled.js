@@ -1,7 +1,12 @@
 import styled from 'styled-components';
 
+export const CartPageSection = styled.section`
+  height: 100vh;
+  background: linear-gradient(to bottom right, #b36c40, white);
+`;
+
 export const CartPageContainer = styled.div`
-  margin-top: 130px;
+  padding-top: 130px;
   width: 1280px;
   margin-left: auto;
   margin-right: auto;
