@@ -10,8 +10,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  // <React.StrictMode>
-  <>
+  <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter basename="/indira">
@@ -20,6 +19,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       </PersistGate>
     </Provider>
     <ToastContainer />
-  </>
-  // </React.StrictMode>
+  </React.StrictMode>
 );
