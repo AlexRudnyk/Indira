@@ -1,4 +1,5 @@
 import { useAuth } from 'hooks';
+import { useDispatch } from 'react-redux';
 import { CartItem } from 'components/CartItem';
 import {
   CartPageContainer,
@@ -7,13 +8,17 @@ import {
   MakeOrderWrapper,
   OrderBtn,
   TotalSumSpan,
+  EmptyCartMessageWrapper,
+  EmptyCartMessage,
 } from './CartPage.styled';
 import { useState } from 'react';
 import axios from 'axios';
+import { clearCart } from 'redux/auth/operations';
 
 export const CartPage = () => {
-  const { user } = useAuth();
+  const { user, isRefreshing } = useAuth();
   const [totalSum, setTotalSum] = useState('');
+  const dispatch = useDispatch();
 
   let totalSumArr = [];
   let goodsArray = [];
@@ -42,6 +47,7 @@ export const CartPage = () => {
         'http://localhost:3030/api/users/order',
         mailBody
       );
+      dispatch(clearCart());
       return data;
     } catch (error) {
       console.log(error.message);
@@ -49,34 +55,36 @@ export const CartPage = () => {
   };
 
   return (
-    <CartPageContainer>
-      <CartPageTitle>Your goods in cart</CartPageTitle>
-      {user.goodsInCart.length !== 0 ? (
-        <>
-          <ul>
-            {user.goodsInCart.map(goodId => (
-              <CartItem
-                goodId={goodId}
-                key={goodId}
-                getTotalSum={getTotalSum}
-                getOrder={handleGetOrder}
-              />
-            ))}
-          </ul>
-          <MakeOrderWrapper>
-            <TotalSumText>
-              Your order is <TotalSumSpan>{totalSum}</TotalSumSpan> UAH
-            </TotalSumText>
-            <OrderBtn type="button" onClick={handleOrderClick}>
-              Make order
-            </OrderBtn>
-          </MakeOrderWrapper>
-        </>
-      ) : (
-        <div>
-          <p>You didn't add any good to cart</p>
-        </div>
-      )}
-    </CartPageContainer>
+    !isRefreshing && (
+      <CartPageContainer>
+        {user.goodsInCart.length !== 0 ? (
+          <>
+            <CartPageTitle>Your goods in cart</CartPageTitle>
+            <ul>
+              {user.goodsInCart.map(goodId => (
+                <CartItem
+                  goodId={goodId}
+                  key={goodId}
+                  getTotalSum={getTotalSum}
+                  getOrder={handleGetOrder}
+                />
+              ))}
+            </ul>
+            <MakeOrderWrapper>
+              <TotalSumText>
+                Your order is <TotalSumSpan>{totalSum}</TotalSumSpan> UAH
+              </TotalSumText>
+              <OrderBtn type="button" onClick={handleOrderClick}>
+                Make order
+              </OrderBtn>
+            </MakeOrderWrapper>
+          </>
+        ) : (
+          <EmptyCartMessageWrapper>
+            <EmptyCartMessage>Your cart is empty</EmptyCartMessage>
+          </EmptyCartMessageWrapper>
+        )}
+      </CartPageContainer>
+    )
   );
 };

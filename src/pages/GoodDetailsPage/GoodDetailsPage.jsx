@@ -1,5 +1,7 @@
 import { GoodDetailsItem } from 'components/GoodDetailsItem';
+import { useAuth } from 'hooks';
 
 export const GoodDetailsPage = () => {
-  return <GoodDetailsItem />;
+  const { isRefreshing } = useAuth();
+  return !isRefreshing && <GoodDetailsItem />;
 };

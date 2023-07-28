@@ -1,6 +1,6 @@
 import { Formik, ErrorMessage } from 'formik';
 import { useState } from 'react';
-// import * as yup from 'yup';
+import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { addGoods } from 'redux/goods/operations';
 import {
@@ -9,21 +9,22 @@ import {
   AdminPageForm,
   AdminPageInput,
   AdminPageBtn,
+  AdminPageTextArea,
 } from './AdminPage.styled';
 import { AdminGoodItem } from 'components/AdminGoodItem';
 import { useGoods } from 'hooks';
 import { ImageUpload } from 'components/ImageUpload';
 
-// const schema = yup.object().shape({
-//   title: yup
-//     .string()
-//     .min(2)
-//     .max(30, 'must be less than 30 characters')
-//     .required(),
-//   text: yup.string().min(5, 'must be at least 5 characters').required(),
-//   photoURL: yup.string().required(),
-//   price: yup.number().required(),
-// });
+const schema = yup.object().shape({
+  title: yup
+    .string()
+    .min(2)
+    .max(30, 'must be less than 30 characters')
+    .required(),
+  text: yup.string().min(5, 'must be at least 5 characters').required(),
+  photoURL: yup.string().required(),
+  price: yup.number().required(),
+});
 
 export const AdminPage = () => {
   const dispatch = useDispatch();
@@ -35,7 +36,7 @@ export const AdminPage = () => {
     title: '',
     text: '',
     description: '',
-    photoURL: null,
+    photoURL: '',
     price: '',
   };
 
@@ -49,7 +50,7 @@ export const AdminPage = () => {
     <AdminPageSection>
       <AdminPageWrapper>
         <Formik
-          // validationSchema={schema}
+          validationSchema={schema}
           initialValues={initialValues}
           onSubmit={handleSubmit}
         >
@@ -71,7 +72,7 @@ export const AdminPage = () => {
               />
               <ErrorMessage name="text" />
 
-              <AdminPageInput
+              <AdminPageTextArea
                 as="textarea"
                 value={description}
                 type="text"

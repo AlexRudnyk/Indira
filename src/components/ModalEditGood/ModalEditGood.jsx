@@ -9,6 +9,7 @@ import {
   AdminPageForm,
   AdminPageInput,
   AdminPageBtn,
+  AdminPageTextArea,
 } from './ModalEditGood.styled';
 import { ErrorMessage, Formik } from 'formik';
 
@@ -67,7 +68,7 @@ export const ModalEditGood = ({ onClose, onSubmit, good }) => {
                 <AdminPageInput type="text" name="text" />
                 <ErrorMessage name="text" />
 
-                <AdminPageInput
+                <AdminPageTextArea
                   as="textarea"
                   type="text"
                   name="description"
@@ -87,8 +88,6 @@ export const ModalEditGood = ({ onClose, onSubmit, good }) => {
             )}
           </Formik>
         </AdminPageWrapper>
-
-        {/* <AdminEditGoodForm onFormSubmit={handleSubmit} good={good} /> */}
       </ModalWindow>
     </Backdrop>,
     modalRoot

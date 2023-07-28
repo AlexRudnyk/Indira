@@ -111,7 +111,7 @@ export const RegisterPage = () => {
               />
               <ErrorMessage name="password" />
 
-              <RegisterPageBtn type="submit">Submit</RegisterPageBtn>
+              <RegisterPageBtn type="submit">Register</RegisterPageBtn>
             </RegisterPageForm>
           </Formik>
         </RegisterFormWrapper>

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const HeaderSection = styled.header`
   position: fixed;
@@ -20,11 +21,21 @@ export const Container = styled.div`
 
 export const HeaderWrapper = styled.div`
   display: flex;
+  align-content: center;
   justify-content: space-between;
   padding: 20px;
 `;
 
+export const Logo = styled(Link)`
+  display: inline-block;
+  padding: 0 15px;
+  font-size: 48px;
+  color: brown;
+  font-family: 'Dancing Script', cursive;
+  font-family: 'Great Vibes', cursive;
+`;
+
 export const NavWrapper = styled.div`
   display: flex;
-  gap: 10px;
+  align-items: center;
 `;

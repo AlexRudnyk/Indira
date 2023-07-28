@@ -50,6 +50,7 @@ export const CloseSvg = styled(Close)`
   text-align: center;
   width: 16px;
   height: 16px;
+  cursor: pointer;
 `;
 
 export const AdminPageWrapper = styled.div`
@@ -60,8 +61,7 @@ export const AdminPageWrapper = styled.div`
 export const AdminPageForm = styled(Form)`
   display: flex;
   flex-direction: column;
-  width: 300px;
-  margin-right: 100px;
+  width: 400px;
 `;
 
 export const AdminPageInput = styled(Field)`
@@ -74,15 +74,29 @@ export const AdminPageInput = styled(Field)`
   }
 `;
 
-export const AdminPageTextArea = styled.textarea`
-  margin-bottom: 30px;
-  &:focus {
-    outline: none;
-  }
+export const AdminPageTextArea = styled(AdminPageInput)`
+  resize: none;
 `;
 
 export const AdminPageBtn = styled.button`
   width: 70px;
-  padding: 5px;
+  padding: 10px;
   cursor: pointer;
+  background-color: #b36c40;
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+  font-family: inherit;
+  color: white;
+  align-self: center;
+
+  transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  -webkit-box-shadow: 10px 10px 27px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 27px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 27px 0px rgba(0, 0, 0, 0.75);
 `;

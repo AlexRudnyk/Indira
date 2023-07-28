@@ -56,6 +56,7 @@ export const ImageUpload = ({ setFieldValue }) => {
   const handleResetClick = () => {
     setPreview(null);
     setImage(null);
+    setIsUploaded(false);
   };
 
   return (

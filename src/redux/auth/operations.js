@@ -88,3 +88,15 @@ export const deleteFromCart = createAsyncThunk(
     }
   }
 );
+
+export const clearCart = createAsyncThunk(
+  'auth/clearCart',
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await axios.get('/api/users/clearcart');
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);

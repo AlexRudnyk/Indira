@@ -18,7 +18,7 @@ export const GoodDetailsItem = () => {
   const { id } = useParams();
   const [good, setGood] = useState({});
   const dispatch = useDispatch();
-  const { user, isLoggedIn } = useAuth();
+  const { user, isLoggedIn, isRefreshing } = useAuth();
 
   useEffect(() => {
     async function getGood() {
@@ -43,7 +43,8 @@ export const GoodDetailsItem = () => {
   };
 
   return (
-    good && (
+    good &&
+    !isRefreshing && (
       <GoodDetailsContainer>
         <GoodDetailsWrapper>
           <div>

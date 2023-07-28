@@ -79,7 +79,7 @@ export const LoginPage = () => {
               />
               <ErrorMessage name="password" />
 
-              <LoginPageBtn type="submit">Submit</LoginPageBtn>
+              <LoginPageBtn type="submit">Login</LoginPageBtn>
             </LoginPageForm>
           </Formik>
         </LoginFormWrapper>

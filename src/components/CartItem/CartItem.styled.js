@@ -41,6 +41,16 @@ export const CartItemQuantityBtn = styled.button`
   width: 30px;
   padding: 5px;
   cursor: pointer;
+  background-color: lightgrey;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+
+  transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 export const CartItemQuantity = styled.div`
@@ -57,6 +67,21 @@ export const CartItemSum = styled.div`
 `;
 
 export const CartItemDelBtn = styled.button`
-  padding: 5px;
+  padding: 10px;
   cursor: pointer;
+  background-color: #b36c40;
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+
+  transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  -webkit-box-shadow: 10px 10px 27px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 27px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 27px 0px rgba(0, 0, 0, 0.75);
 `;

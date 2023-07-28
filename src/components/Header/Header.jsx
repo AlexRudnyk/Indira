@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { UserNav } from 'components/UserNav';
 import { AuthNav } from 'components/AuthNav';
 import { useAuth } from 'hooks';
@@ -7,6 +6,7 @@ import {
   Container,
   HeaderWrapper,
   NavWrapper,
+  Logo,
 } from './Header.styled';
 
 export const Header = () => {
@@ -15,7 +15,7 @@ export const Header = () => {
     <HeaderSection>
       <Container>
         <HeaderWrapper>
-          <Link to="/">Logo</Link>
+          <Logo to="/">Indira</Logo>
           <NavWrapper>{isLoggedIn ? <UserNav /> : <AuthNav />}</NavWrapper>
         </HeaderWrapper>
       </Container>

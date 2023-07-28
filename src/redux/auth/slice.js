@@ -6,6 +6,7 @@ import {
   refreshUser,
   addToCart,
   deleteFromCart,
+  clearCart,
 } from './operations';
 
 const initialState = {
@@ -100,7 +101,14 @@ const authSlice = createSlice({
         state.isRefreshing = false;
         state.error = false;
       })
-      .addCase(deleteFromCart.rejected, handleRejected);
+      .addCase(deleteFromCart.rejected, handleRejected)
+      .addCase(clearCart.pending, handlePending)
+      .addCase(clearCart.fulfilled, (state, action) => {
+        state.user.goodsInCart = [];
+        state.isRefreshing = false;
+        state.error = false;
+      })
+      .addCase(clearCart.rejected, handleRejected);
   },
 });
 

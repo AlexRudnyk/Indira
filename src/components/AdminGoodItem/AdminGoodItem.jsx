@@ -5,6 +5,7 @@ import {
   AdminGoodItemImg,
   AdminGoodItemLine,
   AdminGoodItemText,
+  AdminGoodItemPrice,
   AdminGoodItemBtn,
   AdminTextWrapper,
 } from './AdminGoodItem.styled';
@@ -38,7 +39,7 @@ export const AdminGoodItem = ({ good }) => {
         <AdminGoodItemImg src={good.photoURL} alt="good" />
         <AdminTextWrapper>
           <AdminGoodItemText>{good.title}</AdminGoodItemText>
-          <AdminGoodItemText>{good.price} UAH</AdminGoodItemText>
+          <AdminGoodItemPrice>{good.price} UAH</AdminGoodItemPrice>
         </AdminTextWrapper>
         <AdminGoodItemBtn type="button" onClick={handleEditGoodClick}>
           Edit

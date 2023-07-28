@@ -21,7 +21,7 @@ export const UserNav = () => {
 
   return (
     <UserNavWrapper>
-      <UserGreetingText>Hello, {`${user.name}`}</UserGreetingText>
+      <UserGreetingText>Hello, {user.name}</UserGreetingText>
       <UserNavLogoutBtn type="button" onClick={handleLogoutClick}>
         Logout
       </UserNavLogoutBtn>
