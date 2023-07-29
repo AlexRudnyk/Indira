@@ -1,16 +1,13 @@
 {
   "files": {
     "main.css": "/indira/static/css/main.4aeb4aac.css",
-    "main.js": "/indira/static/js/main.a46ab195.js",
-    "static/media/mandala.png": "/indira/static/media/mandala.d674d9cac6fd1954a536.png",
-    "static/media/success-check.png": "/indira/static/media/success-check.d6b8af90b8407995f8bc.png",
+    "main.js": "/indira/static/js/main.70d83fe7.js",
     "index.html": "/indira/index.html",
-    "static/media/Сlose.svg": "/indira/static/media/Сlose.4ca60f1813426122dabf98a3268fb691.svg",
     "main.4aeb4aac.css.map": "/indira/static/css/main.4aeb4aac.css.map",
-    "main.a46ab195.js.map": "/indira/static/js/main.a46ab195.js.map"
+    "main.70d83fe7.js.map": "/indira/static/js/main.70d83fe7.js.map"
   },
   "entrypoints": [
     "static/css/main.4aeb4aac.css",
-    "static/js/main.a46ab195.js"
+    "static/js/main.70d83fe7.js"
   ]
 }
